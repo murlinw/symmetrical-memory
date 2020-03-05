@@ -8,6 +8,11 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === '!NickPlz') {
+    
+    process.on('uncaughtException', (error) => {
+      msg.channel.send("<@117809686543204361> your server errored with:\n" + JSON.stringify(error));
+    });
+
     https.get('https://nick.denaro.dev/routes', (resp) => {
       let data = '';
       resp.on('data', (chunk) => {
