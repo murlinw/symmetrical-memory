@@ -28,7 +28,11 @@ client.on('message', msg => {
       });
     });
   } else if(msg.content === '!DrewPlz') {
-    msg.channel.send("<@118533809598627843> IT'S THURSDAY");
+    if(msg.member.voice.channel.members.map(user => user.displayName).includes('Drew')) {
+      msg.channel.send("<@118534418125029379> <@!118536732500164610> <@117809686543204361> an annonucement: IT'S GO TIME");
+    } else {
+      msg.channel.send("<@118533809598627843> IT'S THURSDAY");
+    }
   }
 });
 
