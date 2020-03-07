@@ -20,8 +20,8 @@ client.on('message', msg => {
       });
 
       resp.on('end', () => {
-        if (!data.includes('swagger')) {
-          msg.channel.send("<@117809686543204361>, an annonucement: plz https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-3.1");
+        if (!data.includes('swagger-ui')) {
+          msg.channel.send("<@117809686543204361>, an annonucement: plz https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-3.1#swagger-ui");
         } else {
           msg.channel.send("<@118534418125029379> <@!118536732500164610> IT'S GO TIME");
         }
