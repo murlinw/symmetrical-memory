@@ -15,7 +15,11 @@ client.on("message", (msg) => {
       );
     });
 
-    https.Server.setTimeout(10000);
+    https.Server.setTimeout(2000, () => {
+      msg.channel.send(
+        "<@117809686543204361> plz fix server, it's timing out" + e
+      );
+    });
 
     https
       .get("https://nick.denaro.dev/routes", (resp) => {
