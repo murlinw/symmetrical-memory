@@ -15,12 +15,10 @@ client.on("message", (msg) => {
       );
     });
 
-    let requestOptions = {
-      timeout: 500,
-    };
+    https.Server.timeout = 500;
 
     https
-      .get("https://nick.denaro.dev/routes", requestOptions, (resp) => {
+      .get("https://nick.denaro.dev/routes", (resp) => {
         let data = "";
         resp.on("data", (chunk) => {
           data += chunk;
