@@ -15,24 +15,32 @@ client.on("message", (msg) => {
       );
     });
 
-    https.get("https://nick.denaro.dev/routes", (resp) => {
-      let data = "";
-      resp.on("data", (chunk) => {
-        data += chunk;
-      });
+    let requestOptions = {
+      timeout: 2000,
+    };
 
-      resp.on("end", () => {
-        if (!data.includes("swagger-ui")) {
-          msg.channel.send(
-            "<@117809686543204361>, an annonucement: plz https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-3.1#swagger-ui"
-          );
-        } else {
-          msg.channel.send(
-            "<@118534418125029379> <@!118536732500164610> IT'S GO TIME"
-          );
-        }
+    https
+      .get("https://nick.denaro.dev/routes", requestOptions, (resp) => {
+        let data = "";
+        resp.on("data", (chunk) => {
+          data += chunk;
+        });
+
+        resp.on("end", () => {
+          if (!data.includes("swagger-ui")) {
+            msg.channel.send(
+              "<@117809686543204361>, an annonucement: plz https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-3.1#swagger-ui"
+            );
+          } else {
+            msg.channel.send(
+              "<@118534418125029379> <@!118536732500164610> IT'S GO TIME"
+            );
+          }
+        });
+      })
+      .on("error", (e) => {
+        msg.channel.send("<@117809686543204361> plz fix server " + e);
       });
-    });
   } else if (msg.content === "!DrewPlz") {
     if (
       msg.member.voice.channel.members
@@ -45,8 +53,8 @@ client.on("message", (msg) => {
     } else {
       msg.channel.send("<@118533809598627843> IT'S THURSDAY");
     }
-  } else if(msg.content === "!Hey") {
-    msg.channel.send("Hey :)")
+  } else if (msg.content === "!Hey") {
+    msg.channel.send("Hey :)");
   }
 });
 
