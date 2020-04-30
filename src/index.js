@@ -16,7 +16,7 @@ client.on("message", (msg) => {
     });
 
     let requestOptions = {
-      timeout: 2000,
+      timeout: 500,
     };
 
     https
