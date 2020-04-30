@@ -15,14 +15,13 @@ client.on("message", (msg) => {
       );
     });
 
-    https.Server.setTimeout(2000, () => {
-      msg.channel.send(
-        "<@117809686543204361> plz fix server, it's timing out" + e
-      );
-    });
+    let urlRequest = {
+      url: "https://nick.denaro.dev/routes",
+      timeout: 10000,
+    };
 
     https
-      .get("https://nick.denaro.dev/routes", (resp) => {
+      .get(urlRequest, (resp) => {
         let data = "";
         resp.on("data", (chunk) => {
           data += chunk;
@@ -56,7 +55,7 @@ client.on("message", (msg) => {
       msg.channel.send("<@118533809598627843> IT'S THURSDAY");
     }
   } else if (msg.content === "!Hey") {
-    msg.channel.send("Hey :)");
+    msg.channel.send("Yooooo");
   }
 });
 
