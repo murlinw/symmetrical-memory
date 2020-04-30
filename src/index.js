@@ -15,7 +15,7 @@ client.on("message", (msg) => {
       );
     });
 
-    https.Server.setTimeout(2000);
+    https.Server.setTimeout(10000);
 
     https
       .get("https://nick.denaro.dev/routes", (resp) => {
